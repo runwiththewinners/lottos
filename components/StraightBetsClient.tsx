@@ -1295,7 +1295,7 @@ export default function StraightBetsClient({
               marginBottom: 4,
             }}
           >
-            <span style={{ color: "#f5f5f5" }}>Lot</span>
+            
             
             <span
               style={{
@@ -1305,7 +1305,7 @@ export default function StraightBetsClient({
                 WebkitTextFillColor: "transparent",
               }}
             >
-              tos
+              Lottos
             </span>
           </h1>
 
