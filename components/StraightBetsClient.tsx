@@ -1243,8 +1243,6 @@ export default function StraightBetsClient({
               marginBottom: 4,
             }}
           >
-            <span style={{ color: "#f5f5f5" }}>Lotto</span>
-            <br />
             <span
               style={{
                 background:
@@ -1253,7 +1251,7 @@ export default function StraightBetsClient({
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Plays
+              Lottos
             </span>
           </h1>
 
