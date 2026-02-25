@@ -10,7 +10,11 @@ export async function redisGet(key: string): Promise<any> {
   const data = await res.json();
   if (!data.result) return null;
   try {
-    return JSON.parse(data.result);
+    let parsed = JSON.parse(data.result);
+    if (typeof parsed === "string") {
+      try { parsed = JSON.parse(parsed); } catch {}
+    }
+    return parsed;
   } catch {
     return data.result;
   }
@@ -24,7 +28,7 @@ export async function redisSet(key: string, value: any): Promise<void> {
       Authorization: "Bearer " + UPSTASH_TOKEN,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(JSON.stringify(value)),
+    body: JSON.stringify(value),
     cache: "no-store",
   });
 }
