@@ -334,13 +334,18 @@ function AdminPanel({ onPost, onClose }: { onPost: (play: any) => void; onClose:
           body: JSON.stringify({ imageData: base64Data, mediaType }),
         });
         const data = await response.json();
+        console.log('Scan response:', JSON.stringify(data).substring(0, 500));
         if (data.success && data.result) {
           const parsed = data.result;
+          console.log('Parsed result:', JSON.stringify(parsed).substring(0, 500));
           if (parsed.legs && parsed.legs.length > 0) {
             setLegs(parsed.legs.map((l: any) => ({ team: l.team || '', betType: l.betType || 'SPREAD', odds: l.odds || '', matchup: l.matchup || '', sport: l.sport || 'NBA' })));
           }
           if (parsed.parlayOdds) setParlayOdds(parsed.parlayOdds);
           if (parsed.units) setUnits(parsed.units);
+        } else {
+          console.error('Scan failed:', data.error || 'Unknown error');
+          setScanError(data.error || 'Scan failed - try again');
         }
       } catch (err) {
         console.error("Scan error:", err);
