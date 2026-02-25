@@ -341,7 +341,7 @@ function AdminPanel({ onPost, onClose }: { onPost: (play: any) => void; onClose:
           if (parsed.legs && parsed.legs.length > 0) {
             setLegs(parsed.legs.map((l: any) => ({ team: l.team || '', betType: l.betType || 'SPREAD', odds: l.odds || '', matchup: l.matchup || '', sport: l.sport || 'NBA' })));
           }
-          if (parsed.parlayOdds) setParlayOdds(parsed.parlayOdds);
+          if (parsed.parlayOdds) setLottoOdds(parsed.parlayOdds);
           if (parsed.units) setUnits(parsed.units);
         } else {
           console.error('Scan failed:', data.error || 'Unknown error');
